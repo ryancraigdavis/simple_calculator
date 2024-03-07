@@ -1,9 +1,17 @@
 """This module contains the calculator functions for the formulas square, tri, lazy caterer, and magic squares"""
 
+import random
+
 
 def squareNums(n):
     """Calculates the square"""
     return n**2
+
+
+def multiplyRandNum(n):
+    rand_num = random.randrange(1, 100)
+    print(f"{n} multiplied by {rand_num}")
+    return n * rand_num
 
 
 def triNums(n):
@@ -23,7 +31,7 @@ def magicSquares(n):
 
 def run_calculator(input_formula, input_num):
     """Calls and returns results for the specified formulas"""
-    calculator = [squareNums, triNums, lazyCaterer, magicSquares]
+    calculator = [squareNums, triNums, lazyCaterer, magicSquares, multiplyRandNum]
     formula = calculator[input_formula - 1]
     return_result = formula(input_num)
     return return_result
