@@ -21,6 +21,26 @@ def magicSquares(n):
     return (n * (n**2 + 1)) / 2
 
 
+def hypotenuse(a, b):
+    """Calculates the hypotenuse of a right triangle given two sides"""
+    return (a**2 + b**2) ** 0.5
+
+
+def factorial(n):
+    """Calculates the factorial of n"""
+    if n == 0:
+        return 1
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+
+def celsius_to_fahrenheit(c):
+    """Converts celsius to fahrenheit"""
+    return c * 9 / 5 + 32
+
+
 def run_calculator(input_formula, input_num):
     """Calls and returns results for the specified formulas"""
     calculator = [squareNums, triNums, lazyCaterer, magicSquares]
