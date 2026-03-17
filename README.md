@@ -3,30 +3,23 @@
 This program takes a few different inputs and can spit out various results from mathematical formulas.
 Your task is to create simple unit tests for each of these formulas.
 
-## Step 1: Poetry
-To set up Poetry you want to do the following things.</br>
-### a) `poetry init` which will create the poetry project
-### b) You want to then add an include section to your project with the destination of your start script. 
-In this case mine is called `__init__.py` and sits in the following structure:
+## Step 1: uv
+To set up the project with uv you want to do the following things.
+### a) `uv init` which will create the uv project
+### b) The project uses a `src` layout with the following structure:
 ```
-    quart_example
+    simple_calculator
     ├── src
-    │   └── poetry_example
+    │   └── calculator
     │       ├── __init__.py
     │       └── ...
     ├── .gitignore
     ├── pyproject.toml
-    ├── poetry.lock
+    ├── uv.lock
     └── ...
 ```
-Thus my include statement looks like this (it goes in the `[tool.poetry]` section at the top level):
-```
-packages = [
-  { include = "src", from = "." }
-]
-```
-What does this do? It allows you to install your own project as a package into your venv. This allows you to create scripts you can run which is critical for deployment.
+uv automatically discovers packages under `src/` when using the `uv_build` build backend, so no extra include configuration is needed.
 ### c) Add your dependencies
-In this case you can run `poetry add quart` to install quart and then whatever else you need
-### d) Activate your poetry shell and install
-Run `poetry shell` in order to launch your virtual environment and then run `poetry install` to install all dependencies including your own package. You need a README.md or the installing of your own project will fail.
+Run `uv add <package>` to install dependencies. For dev-only dependencies, use `uv add --group dev <package>`.
+### d) Sync and run
+Run `uv sync` to create the virtual environment and install all dependencies (including your own project as an editable package). Then use `uv run <command>` to run commands within the environment.
