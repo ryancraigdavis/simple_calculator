@@ -8,7 +8,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN uv sync --frozen --include-all
+RUN uv sync --frozen
 
 RUN uv run pytest
 
