@@ -13,7 +13,7 @@ COPY . .
 # Create virtual env, sync and install project
 RUN uv venv .venv && \
     . .venv/bin/activate && \
-    uv sync --include-all && \
+    uv sync --all-extras && \
     uv pip install -e .
 
 # 4) Run pytest
